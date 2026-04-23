@@ -23,6 +23,12 @@ get_header(); ?>
                         </div>
                     <?php endif; ?>
 
+                    <?php if ( has_excerpt() ) : ?>
+                        <div class="entry-gallery">
+                            <?php the_excerpt(); ?>
+                        </div>
+                    <?php endif; ?>
+
                     <div itemprop="description">
                         <?php the_content(); ?>
                     </div>

@@ -3,7 +3,7 @@
 Plugin Name: Attraction Page
 Description: Un plugin pour créer et gérer des pages d'attractions.
 Version: 1.0
-Author: Votre Nom
+Author: Florian Mancieri
 */
 
 // Sécurité
@@ -24,6 +24,19 @@ require_once plugin_dir_path(__FILE__) . 'includes/contact-form-handler.php';
 if (is_admin()) {
     require_once plugin_dir_path(__FILE__) . 'admin/admin-menu.php';
 }
+
+// Vider les règles de réécriture à l'activation/désactivation
+function attraction_page_activate() {
+    register_attraction_post_type();
+    flush_rewrite_rules();
+}
+register_activation_hook(__FILE__, 'attraction_page_activate');
+
+function attraction_page_deactivate() {
+    flush_rewrite_rules();
+}
+register_deactivation_hook(__FILE__, 'attraction_page_deactivate');
+
 
 // Charger le template pour les attractions
 function load_attraction_template($template) {

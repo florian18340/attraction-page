@@ -18,7 +18,7 @@ function register_attraction_post_type() {
         'labels' => $labels,
         'public' => true,
         'has_archive' => true,
-        'supports' => array('title', 'editor', 'thumbnail'),
+        'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
         'rewrite' => array('slug' => 'attractions'),
     );
 
